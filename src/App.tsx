@@ -15,6 +15,15 @@ import Box from "./components/context/Box";
 import { UserContextProvider } from "./components/context/UserContext";
 import { User } from "./components/context/User";
 import MutableRef from "./components/ref/MutableRef";
+import { Counter as ClassCounter } from "./components/classs/Counter";
+import { Private } from "./components/auth/Private";
+import { Profile } from "./components/auth/Profile";
+import { List } from "./components/generics/List";
+import RandomNumber from "./components/restriction/RandomNumber";
+import { Toast } from "./components/templateliterals/Toast";
+import CustomButton from "./components/html/Button";
+import CustomComponent from "./components/html/CustomComponent";
+import { CustomText } from "./components/polimorphic/Text";
 
 function App() {
   const personName = {
@@ -82,6 +91,74 @@ function App() {
       <br />
 
       <MutableRef />
+      <br />
+      <br />
+
+      <ClassCounter message="data" />
+      <br />
+      <br />
+
+      <Private isLoggedIn={true} component={Profile} />
+      <br />
+      <br />
+
+      {/* <List
+        items={["Batman", "Superman", "Wonder Woman"]}
+        onClick={(item) => console.log(item)}
+      />
+      <br />
+      <List items={[1, 2, 3, 4, 5]} onClick={(item) => console.log(item)} /> */}
+      <List
+        items={[
+          {
+            id: 1,
+            first: "Bruce",
+            last: "Wayne",
+          },
+          {
+            id: 2,
+            first: "Clark",
+            last: "Kent",
+          },
+          {
+            id: 3,
+            first: "Princess",
+            last: "Diana",
+          },
+        ]}
+        onClick={(item) => console.log(item)}
+      />
+      <br />
+      <br />
+
+      <RandomNumber value={10} isPositive />
+      <br />
+      <br />
+
+      <Toast position={"center"} />
+      <br />
+      <br />
+
+      <CustomButton variant="primary" onClick={() => console.log("Clicked")}>
+        Click Button
+      </CustomButton>
+      <br />
+      <br />
+
+      <CustomComponent name="Rifqi Ziyad Imtinan" isLoggedIn />
+      <br />
+      <br />
+
+      <CustomText size="lg" color="primary" as="h1">
+        Heading
+      </CustomText>
+      <CustomText as="p" id="some-id">
+        Paragraf
+      </CustomText>
+      <CustomText as="label" htmlFor="id">
+        Label
+      </CustomText>
+      <CustomText>Div</CustomText>
     </div>
   );
 }
